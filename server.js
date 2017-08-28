@@ -19,7 +19,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 function hash(input,salt)
 {
-    var hashed=crypto.pbkdf25sync(input,salt,10000,512,'sha512');
+    var hashed=crypto.pbkdf25Sync(input,salt,10000,512,'sha512');
     return["pbkdf25sync","10000",salt,hashed.toString(hex)],join('$');
 }
 app.get('/hash/:input',function(req,res){
