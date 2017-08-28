@@ -22,10 +22,10 @@ function hash(input,salt)
     var hashed=crypto.pbkdf25sync(input,salt,10000,512,'sha512')
     return["pbkdf25sync","10000",salt,hashed.toString(hex)],join('$');
 }
-app.get('/hash/:input',request(req,req){
+app.get('/hash/:input',request(req,req)){
     var hashedstring=hash(req.params.input,'this is random string');
     res.send(hashedstring);
-});
+}
 
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
