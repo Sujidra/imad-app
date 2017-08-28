@@ -1,6 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var crypto=require('crypto');
 
 var app = express();
 app.use(morgan('combined'));
@@ -18,7 +19,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 function hash(input,salt)
 {
-    var hashed=cryptopbkdf25sync(input,salt,10000,512,'sha512')
+    var hashed=crypto.pbkdf25sync(input,salt,10000,512,'sha512')
     return["pbkdf25sync","10000",salt,hashed.toString(hex)],join('$');
 }
 app.get('/hash/:input',request(req,req){
