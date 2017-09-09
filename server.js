@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var crypto = require('crypto');
-var pool=require('pg').pool;
+var pool = require('pg').pool;
 var app = express();
 app.use(morgan('combined'));
 
@@ -25,7 +25,7 @@ var config={
     password:process.env.DB_PASSWORD
 };
 var pool = new pool(config);
-app.get('/test/db',function(req,res){
+app.get('/test-db',function(req,res){
     pool.query('select * from user',function(err,result)
     {
         if(err)
