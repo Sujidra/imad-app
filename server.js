@@ -24,7 +24,7 @@ var config={
     port:'5432',
     password:process.env.DB_PASSWORD
 };
-var pool = new Pool(config);
+var pool = new pool(config);
 app.get('/test-db',function(req,res){
     pool.query('select * from user',function(err,result)
     {
